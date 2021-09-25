@@ -43,20 +43,18 @@
             <h2 class="card-title">{{title}}</h2>
             {{{body}}}
             <p id="mod_sandbox_output"></p>
-            <div class="mod_sandbox_content">
+            <div class="mod_sandbox_buttons">
+                <button id="renderbtn" type="button" class="btn btn-secondary mt-1">{{# str }} renderbtn, mod_sandbox {{/ str }}</button>
                 <button id="mdlbtn" type="button" class="btn btn-secondary mt-1">{{# str }} modalbtn, mod_sandbox {{/ str }}</button>
                 <button id="bootbtn" type="button" class="btn btn-secondary mt-1">{{# str }} bootbtn, mod_sandbox {{/ str }}</button>
-                <button id="renderbtn" type="button" class="btn btn-secondary mt-1">{{# str }} renderbtn, mod_sandbox {{/ str }}</button>
-                <br><br><p></p>
             </div>
         </div>
     </div>
     {{! Bootstrap modal }}
-    <div class="card">
     <div id="mod_sandbox_myModal" class="mod_sandbox_modal">
         <div class="mod_sandbox_modal_content">
             {{! A close button }}
-            <span class="mod_sandbox_close"><i class="fa fa-times"></i></span>
+            <span id="mod_sandbox_close"><i class="fa fa-times"></i></span>
             <div class="mod_sandbox_details">
                 <p>{{#str}} label, mod_sandbox {{/str}}</p>
             </div>
@@ -66,12 +64,14 @@
                     <input class="form-control" id="ex3" type="text">
                 </div>
             </div>
+            <button id="mod_sandbox_savebtn" type="button" class="btn btn-secondary mt-1">{{# str }} save {{/ str }}</button>
         </div>
     </div>
     {{! Render a template from JavaScript }}
     <div class="card">
-        <div class="mod_sandbox_render">
-            {{> mod_sandbox/renderme}}
+        <div class="card-body">
+            <div id="mod_sandbox_render"></div>
+            <div class="mod_sandbox_content"></div>
         </div>
     </div>
 </div>
@@ -82,11 +82,21 @@
             module.get_root();
         }
     );
-    require(['mod_sandbox/modal'],
-        function(module) {
-            module.show_modal();
-        }
-    );
+    require(['mod_sandbox/modal', 'core/str'], function(module, str) {
+        var strings = [
+            {
+                key: 'clearcontent',
+                component: 'mod_sandbox'
+            },
+            {
+                key: 'clearcontentquestion',
+                component: 'mod_sandbox'
+            }
+        ];
+        str.get_strings(strings).then(function (results) {
+            module.show_modal(results);
+        });
+    });
     require(['mod_sandbox/bootstrap'],
         function(module) {
             module.boot_modal();

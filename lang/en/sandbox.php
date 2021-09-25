@@ -46,13 +46,14 @@ $string['nosandboxes'] = 'No instances';
 
 // Mod form specific sandbox settings.
 $string['title'] = 'Activity title';
-$string['whereami'] = "You are at: ";
-$string['modalbtn'] = "Clear content";
 
-// Bootstrap Modal.
-$string['label'] = 'Bootstrap modal';
-$string['comment'] = 'Make a comment';
+// JS Examples.
 $string['bootbtn'] = 'Comment';
-
-// Render template.
+$string['clearcontent'] = 'Clear content';
+$string['clearcontentquestion'] = 'Do you really want to clear the content?';
+$string['comment'] = 'Make a comment';
+$string['label'] = 'Bootstrap modal';
+$string['modalbtn'] = "Clear content";
 $string['renderbtn'] = 'Add content';
+$string['rendermename'] = 'Tweety bird';
+$string['whereami'] = "You are at: ";

@@ -21,7 +21,8 @@
     Moodle renders a simple view page
 
     Classes required for JS:
-    * none
+    * mod_sandbox_output
+    * mdlbtn
 
     Data attributes required for JS:
     * none
@@ -36,9 +37,74 @@
          "body": "<p>My html body</p>"
     }
 }}
-<div class="card">
-    <div class="card-body">
-        <h2 class="card-title">{{title}}</h2>
-        {{{body}}}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{title}}</h2>
+            {{{body}}}
+            <p id="mod_sandbox_output"></p>
+            <div class="mod_sandbox_buttons">
+                <button id="renderbtn" type="button" class="btn btn-secondary mt-1">{{# str }} renderbtn, mod_sandbox {{/ str }}</button>
+                <button id="mdlbtn" type="button" class="btn btn-secondary mt-1">{{# str }} modalbtn, mod_sandbox {{/ str }}</button>
+                <button id="bootbtn" type="button" class="btn btn-secondary mt-1">{{# str }} bootbtn, mod_sandbox {{/ str }}</button>
+            </div>
+        </div>
+    </div>
+    {{! Bootstrap modal }}
+    <div id="mod_sandbox_myModal" class="mod_sandbox_modal">
+        <div class="mod_sandbox_modal_content">
+            {{! A close button }}
+            <span id="mod_sandbox_close"><i class="fa fa-times"></i></span>
+            <div class="mod_sandbox_details">
+                <p>{{#str}} label, mod_sandbox {{/str}}</p>
+            </div>
+            <div class="mod_sandbox_form">
+                <div class="col-xs-4">
+                    <label for="ex3">{{#str}} comment, mod_sandbox {{/str}}</label>
+                    <input class="form-control" id="ex3" type="text">
+                </div>
+            </div>
+            <button id="mod_sandbox_savebtn" type="button" class="btn btn-secondary mt-1">{{# str }} save {{/ str }}</button>
+        </div>
+    </div>
+    {{! Render a template from JavaScript }}
+    <div class="card">
+        <div class="card-body">
+            <div id="mod_sandbox_render"></div>
+            <div class="mod_sandbox_content"></div>
+        </div>
     </div>
 </div>
+
+{{#js}}
+    require(['mod_sandbox/whereami'],
+        function(module) {
+            module.get_root();
+        }
+    );
+    require(['mod_sandbox/modal', 'core/str'], function(module, str) {
+        var strings = [
+            {
+                key: 'clearcontent',
+                component: 'mod_sandbox'
+            },
+            {
+                key: 'clearcontentquestion',
+                component: 'mod_sandbox'
+            }
+        ];
+        str.get_strings(strings).then(function (results) {
+            module.show_modal(results);
+        });
+    });
+    require(['mod_sandbox/bootstrap'],
+        function(module) {
+            module.boot_modal();
+        }
+    );
+    require(['mod_sandbox/renderme'],
+        function(module) {
+            module.render_content();
+        }
+    );
+{{/js}}

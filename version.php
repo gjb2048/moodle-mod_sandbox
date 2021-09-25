@@ -30,8 +30,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_sandbox';
-$plugin->version = 2021081400;
+$plugin->version = 2021081401;
 $plugin->requires  = 2021051700.00; // 3.11 (Build: 20210517).
 $plugin->supported = array(311, 311);
-$plugin->release = 'V3.11.1.0';
+$plugin->release = 'V3.11.1.1';
 $plugin->maturity = MATURITY_STABLE;

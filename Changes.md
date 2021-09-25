@@ -1,6 +1,10 @@
 Changes
 =======
 
+V3.11.1.1
+---------
+1. Added AMD JS examples.
+
 V3.11.1.0
 ---------
 1. Moodle 3.11 version.

@@ -31,14 +31,12 @@
 use mod_sandbox\output\view;
 require_once('../../config.php');
 
-// We need the course module id (id).
-$id = optional_param('id', 0, PARAM_INT);
+// We need the Sandbox instance id.
+$id = required_param('id', PARAM_INT);
 
-if ($id) {
-    $cm = get_coursemodule_from_id('sandbox', $id, 0, false, MUST_EXIST);
-    $course = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
-    $sandbox = $DB->get_record('sandbox', array('id' => $cm->instance), '*', MUST_EXIST);
-}
+$cm = get_coursemodule_from_id('sandbox', $id, 0, false, MUST_EXIST);
+$course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
+$sandbox = $DB->get_record('sandbox', ['id' => $cm->instance], '*', MUST_EXIST);
 
 // Print the page header.
 $PAGE->set_url('/mod/sandbox/view.php', array('id' => $cm->id));

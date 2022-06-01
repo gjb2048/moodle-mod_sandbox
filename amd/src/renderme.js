@@ -16,6 +16,9 @@ export const render_content = () => {
         button.addEventListener('click', renderContent);
     });
 
+    /**
+     * Render the content.
+     */
     function renderContent() {
         Templates.render('mod_sandbox/renderme', context)
         .then(function(html, js) {

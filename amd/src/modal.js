@@ -22,7 +22,9 @@ export const show_modal = (strings) => {
         // Add the event trigger (avoiding .onclick).
         trigger.addEventListener('click', confirm);
 
-        // When button clicked.
+        /**
+         * When button clicked.
+         */
         function confirm() {
             // Convenient to use the log for debugging.
             Log.info('Button clicked');

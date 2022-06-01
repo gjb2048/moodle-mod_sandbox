@@ -15,12 +15,21 @@ export const boot_modal = () => {
     savebtn.addEventListener('click', saveModal);
 
     // Actions.
+    /**
+     * Show the modal.
+     */
     function showModal() {
         modal.style.display = "block";
     }
+    /**
+     * Hide the modal.
+     */
     function hideModal() {
         modal.style.display = "none";
     }
+    /**
+     * Save the modal.
+     */
     function saveModal() {
         Log.info(comment);
         Log.info(input.value);

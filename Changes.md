@@ -1,6 +1,18 @@
 Changes
 =======
 
+V405.1.0
+---------
+1. Moodle 4.5 version.
+2. Removed 'FEATURE_MOD_PURPOSE' to 'sandbox_supports' in 'lib.php' that essentially sets the background and colour of a monologo, removed.
+
+V401.1.0
+---------
+1. Moodle 4.1 version.
+2. Add COPYING.txt.
+3. Add 'monologo', being 'fa-solid fa-plug' from 'Font Awesome 6.2.1 free' - see the license in the 'pix' folder.
+4. Added 'FEATURE_MOD_PURPOSE' to 'simplemod_supports' in 'lib.php' that essentially sets the background and colour of the monologo.
+
 V3.11.1.0
 ---------
 1. Moodle 3.11 version.

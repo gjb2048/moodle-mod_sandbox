@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,23 +12,28 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Redirect the user to the appropriate submission related page.
  *
- * @package    mod_sandbox
- * @copyright  2019 Richard Jones richardnz@outlook.com
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
+ * @package   mod_sandbox
+ * @copyright 2019 Richard Jones richardnz@outlook.com.
+ * @copyright 2022 G J Barnard - {@link https://moodle.org/user/profile.php?id=442195}.
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @see       https://github.com/moodlehq/moodle-mod_simplemod
+ * @see       https://github.com/justinhunt/moodle-mod_simplemod
+ * @see       https://github.com/gjb2048/moodle-mod_simplemod
  */
-require_once(__DIR__ . "../../../config.php");
+
+require_once('../../config.php');
 $id = required_param('id', PARAM_INT);// Course module ID.
 
 // Item number may be != 0 for activities that allow more than one grade per user.
 $itemnumber = optional_param('itemnumber', 0, PARAM_INT);
 $userid = optional_param('userid', 0, PARAM_INT); // Graded user ID (optional).
+
+require_login();
 
 // In the simplest case just redirect to the view page.
 redirect('view.php?id='.$id);

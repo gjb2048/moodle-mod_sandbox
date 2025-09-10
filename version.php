@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,26 +12,26 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Defines the version and other meta-info about the plugin
  *
- * @package    mod_sandbox
- * @copyright  2019 Richard Jones richardnz@outlook.com
- * @copyright  2021 G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
- * @see https://github.com/richardjonesnz/moodle-mod_simplemod
- * @see https://github.com/gjb2048/moodle-mod_simplemod
+ * @package   mod_sandbox
+ * @copyright 2019 Richard Jones richardnz@outlook.com.
+ * @copyright 2022 G J Barnard - {@link https://moodle.org/user/profile.php?id=442195}.
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @see       https://github.com/moodlehq/moodle-mod_simplemod
+ * @see       https://github.com/justinhunt/moodle-mod_simplemod
+ * @see       https://github.com/richardjonesnz/moodle-mod_simplemod
+ * @see       https://github.com/gjb2048/moodle-mod_simplemod
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_sandbox';
-$plugin->version = 2021081400;
-$plugin->requires  = 2021051700.00; // 3.11 (Build: 20210517).
-$plugin->supported = array(311, 311);
-$plugin->release = 'V3.11.1.0';
+$plugin->version = 2025091000;
+$plugin->requires = 2024100700.00; // 4.5 (Build: 20241007).
+$plugin->supported = [405, 405];
+$plugin->release = '405.1.0';
 $plugin->maturity = MATURITY_STABLE;

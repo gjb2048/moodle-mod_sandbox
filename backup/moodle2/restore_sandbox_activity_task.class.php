@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,17 +12,17 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Provides the restore activity task class
  *
  * @package   mod_sandbox
  * @category  backup
- * @copyright 2019 Richard Jones richardnz@outlook.com
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
+ * @copyright 2019 Richard Jones richardnz@outlook.com.
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @see       https://github.com/moodlehq/moodle-mod_simplemod
+ * @see       https://github.com/justinhunt/moodle-mod_simplemod
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -37,7 +37,7 @@ require_once($CFG->dirroot.'/mod/sandbox/backup/moodle2/restore_sandbox_stepslib
  * @package   mod_sandbox
  * @category  backup
  * @copyright 2019 Richard Jones richardnz@outlook.com
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 class restore_sandbox_activity_task extends restore_activity_task {
 
@@ -60,10 +60,10 @@ class restore_sandbox_activity_task extends restore_activity_task {
      * Define the contents in the activity that must be
      * processed by the link decoder
      */
-    static public function define_decode_contents() {
-        $contents = array();
+    public static function define_decode_contents() {
+        $contents = [];
 
-        $contents[] = new restore_decode_content('sandbox', array('intro'), 'sandbox');
+        $contents[] = new restore_decode_content('sandbox', ['intro'], 'sandbox');
 
         return $contents;
     }
@@ -72,8 +72,8 @@ class restore_sandbox_activity_task extends restore_activity_task {
      * Define the decoding rules for links belonging
      * to the activity to be executed by the link decoder
      */
-    static public function define_decode_rules() {
-        $rules = array();
+    public static function define_decode_rules() {
+        $rules = [];
 
         $rules[] = new restore_decode_rule('SANDBOXVIEWBYID', '/mod/sandbox/view.php?id=$1', 'course_module');
         $rules[] = new restore_decode_rule('SANDBOXINDEX', '/mod/sandbox/index.php?id=$1', 'course');
@@ -88,8 +88,8 @@ class restore_sandbox_activity_task extends restore_activity_task {
      * sandbox logs. It must return one array
      * of {@link restore_log_rule} objects
      */
-    static public function define_restore_log_rules() {
-        $rules = array();
+    public static function define_restore_log_rules() {
+        $rules = [];
 
         $rules[] = new restore_log_rule('sandbox', 'add', 'view.php?id={course_module}', '{sandbox}');
         $rules[] = new restore_log_rule('sandbox', 'update', 'view.php?id={course_module}', '{sandbox}');
@@ -108,12 +108,12 @@ class restore_sandbox_activity_task extends restore_activity_task {
      * by the restore final task, but are defined here at
      * activity level. All them are rules not linked to any module instance (cmid = 0)
      */
-    static public function define_restore_log_rules_for_course() {
-        $rules = array();
+    public static function define_restore_log_rules_for_course() {
+        $rules = [];
 
-        // Fix old wrong uses (missing extension)
+        // Fix old wrong uses (missing extension).
         $rules[] = new restore_log_rule('sandbox', 'view all', 'index?id={course}', null,
-                                        null, null, 'index.php?id={course}');
+            null, null, 'index.php?id={course}');
         $rules[] = new restore_log_rule('sandbox', 'view all', 'index.php?id={course}', null);
 
         return $rules;

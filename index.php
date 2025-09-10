@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,16 +12,16 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Prints a list of module instances
  *
- * @package    mod_sandbox
- * @copyright  2019 Richard Jones richardnz@outlook.com
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
+ * @package   mod_sandbox
+ * @copyright 2019 Richard Jones richardnz@outlook.com.
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @see       https://github.com/moodlehq/moodle-mod_simplemod
+ * @see       https://github.com/justinhunt/moodle-mod_simplemod
  */
 
 require_once('../../config.php');
@@ -29,16 +29,16 @@ require_once($CFG->dirroot.'/mod/sandbox/lib.php');
 
 $id = required_param('id', PARAM_INT); // Course.
 
-$course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
+$course = $DB->get_record('course', ['id' => $id], '*', MUST_EXIST);
 
 require_course_login($course);
 
-$params = array(
-    'context' => context_course::instance($course->id)
-);
+$params = [
+    'context' => context_course::instance($course->id),
+];
 
 $strname = get_string('modulenameplural', 'mod_sandbox');
-$PAGE->set_url('/mod/sandbox/index.php', array('id' => $id));
+$PAGE->set_url('/mod/sandbox/index.php', ['id' => $id]);
 $PAGE->navbar->add($strname);
 $PAGE->set_title("$course->shortname: $strname");
 $PAGE->set_heading($course->fullname);
@@ -48,7 +48,7 @@ echo $OUTPUT->header();
 echo $OUTPUT->heading($strname);
 
 if (!$sandboxes = get_all_instances_in_course('sandbox', $course)) {
-    notice(get_string('nosandboxes', 'simplesandboxmod'), new moodle_url('/course/view.php', array('id' => $course->id)));
+    notice(get_string('nosandboxes', 'sandbox'), new core\url('/course/view.php', ['id' => $course->id]));
 }
 
 $usesections = course_format_uses_sections($course->format);
@@ -58,17 +58,17 @@ $table->attributes['class'] = 'generaltable mod_index';
 
 if ($usesections) {
     $strsectionname = get_string('sectionname', 'format_'.$course->format);
-    $table->head  = array ($strsectionname, $strname);
-    $table->align = array ('center', 'left');
+    $table->head  = [$strsectionname, $strname];
+    $table->align = ['center', 'left'];
 } else {
-    $table->head  = array ($strname);
-    $table->align = array ('left');
+    $table->head  = [$strname];
+    $table->align = ['left'];
 }
 
 $modinfo = get_fast_modinfo($course);
 $currentsection = '';
 foreach ($modinfo->instances['sandbox'] as $cm) {
-    $row = array();
+    $row = [];
     if ($usesections) {
         if ($cm->sectionnum !== $currentsection) {
             if ($cm->sectionnum) {
@@ -81,10 +81,10 @@ foreach ($modinfo->instances['sandbox'] as $cm) {
         }
     }
 
-    $class = $cm->visible ? null : array('class' => 'dimmed');
+    $class = $cm->visible ? null : ['class' => 'dimmed'];
 
-    $row[] = html_writer::link(new moodle_url('view.php', array('id' => $cm->id)),
-                $cm->get_formatted_name(), $class);
+    $row[] = html_writer::link(new core\url('view.php', ['id' => $cm->id]),
+        $cm->get_formatted_name(), $class);
     $table->data[] = $row;
 }
 

@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,23 +12,30 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Simple debugging class
  *
  * @package    mod_sandbox.
- * @copyright  2019 Richard Jones richardnz@outlook.com
+ * @copyright  2019 Richard Jones richardnz@outlook.com.
  * @copyright  2021 G J Barnard.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}.
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
 
 namespace mod_sandbox\local;
 
-defined('MOODLE_INTERNAL') || die();
-
+/**
+ * Debugging class.
+ */
 class debugging {
+    /**
+     * Log it.
+     *
+     * @param string $message
+     * @param any $value
+     */
     public static function logit($message, $value) {
         error_log(print_r($message, true));
         error_log(print_r($value, true));

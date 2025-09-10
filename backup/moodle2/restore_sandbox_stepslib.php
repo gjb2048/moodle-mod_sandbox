@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,17 +12,17 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Define all the restore steps that will be used by the restore_sandbox_activity_task.
  *
  * @package   mod_sandbox
  * @category  backup
- * @copyright 2019 Richard Jones richardnz@outlook.com
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_simplemod
- * @see https://github.com/justinhunt/moodle-mod_simplemod
+ * @copyright 2019 Richard Jones richardnz@outlook.com.
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @see       https://github.com/moodlehq/moodle-mod_simplemod
+ * @see       https://github.com/justinhunt/moodle-mod_simplemod
  */
 
 /**
@@ -31,7 +31,7 @@
  * @package   mod_sandbox
  * @category  backup
  * @copyright 2019 Richard Jones richardnz@outlook.com
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license   https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_sandbox_activity_structure_step extends restore_activity_structure_step {
 
@@ -42,7 +42,7 @@ class restore_sandbox_activity_structure_step extends restore_activity_structure
      */
     protected function define_structure() {
 
-        $paths = array();
+        $paths = [];
         $paths[] = new restore_path_element('sandbox', '/activity/sandbox');
 
         // Return the paths wrapped into standard activity structure.
